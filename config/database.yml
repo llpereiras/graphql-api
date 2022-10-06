@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: grahpql_api_development
+
+test:
+  <<: *default
+  database: grahpql_api_test
+
+production:
+  <<: *default
+  database: grahpql_api_production
+  username: grahpql_api
+  password: <%= ENV["GRAHPQL_API_DATABASE_PASSWORD"] %>
