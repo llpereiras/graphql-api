@@ -1,6 +1,11 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require "rails"
+require "active_model/railtie"
+require "active_record/railtie"
+require "action_controller/railtie"
+require "action_view/railtie"
+require "sprockets/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -23,5 +28,9 @@ module GrahpqlApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.session_store :cookie_store, key: '_graphql_api_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
   end
 end
