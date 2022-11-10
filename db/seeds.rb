@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+5.times do |i|
+  user = User.create(username: "user_#{i + 1}", city: "London #{i + 1}", state: "England #{i + 1}", zip: "#{i + 1}")
+  Article.create(name: "Article #{i + 1}", user: user)
+end

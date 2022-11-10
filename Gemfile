@@ -11,6 +11,9 @@ gem 'rails', '~> 7.0.4'
 gem 'rack-cors'
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'factory_bot_rails', '~> 6.2'
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
 end
 
